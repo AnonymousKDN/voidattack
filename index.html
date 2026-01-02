@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ VOIDATTACK - Login</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imghippo.com/files/YaPQ3657YE.jpg" type="image/jpeg">
+    <!-- THAINWILD CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/thainwild-css@latest/dist/thainwild.min.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CUSTOM STYLE -->
+    <style>
+        :root {
+            --void-black: #0a0a0a;
+            --void-dark: #111111;
+            --void-gray: #1a1a1a;
+            --void-white: #ffffff;
+            --void-red: #ff0000;
+            --void-red-dark: #cc0000;
+            --void-red-light: #ff3333;
+            --void-glow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--void-black);
+            color: var(--void-white);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.05) 0%, transparent 20%);
+        }
+        
+        /* LOGIN CONTAINER */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* LOGO */
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .logo-main {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--void-white), var(--void-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--void-glow);
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+        
+        .logo-sub {
+            font-size: 1.2rem;
+            color: var(--void-red-light);
+            opacity: 0.8;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* LOGIN BOX */
+        .login-box {
+            background: var(--void-dark);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--void-red), transparent);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header i {
+            font-size: 2.5rem;
+            color: var(--void-red);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .login-header h2 {
+            font-size: 1.5rem;
+            color: var(--void-white);
+            font-weight: 600;
+        }
+        
+        /* INPUT FIELDS */
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--void-white);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--void-red);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+        
+        .input-with-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            background: var(--void-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--void-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .input-with-icon input:focus {
+            outline: none;
+            border-color: var(--void-red);
+            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+        }
+        
+        /* LOGIN BUTTON */
+        .btn-login {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--void-red), var(--void-red-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login:hover {
+            background: linear-gradient(135deg, var(--void-red-dark), var(--void-red));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        
+        .btn-login i {
+            font-size: 1.2rem;
+        }
+        
+        /* STATUS BAR */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .status-online {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ff00;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff00;
+            animation: pulse 2s infinite;
+        }
+        
+        .contact-admin {
+            color: var(--void-red-light);
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-admin strong {
+            color: var(--void-white);
+        }
+        
+        /* ANIMATIONS */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px var(--void-red); }
+            50% { text-shadow: 0 0 20px var(--void-red); }
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .login-box {
+                padding: 30px 20px;
+            }
+            
+            .logo-main {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="logo-main">
+                <i class="fas fa-bolt"></i> VOIDATTACK
+            </div>
+            <div class="logo-sub">
+                Advanced DDoS Control Panel v1.0
+            </div>
+        </div>
+        
+        <div class="login-box">
+            <div class="login-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>SECURE ACCESS REQUIRED</h2>
+            </div>
+            
+            <div class="input-group">
+                <label for="username">
+                    <i class="fas fa-user"></i> USERNAME
+                </label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user-circle"></i>
+                    <input type="text" id="username" placeholder="Enter username" value="admin" autocomplete="off">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">
+                    <i class="fas fa-key"></i> PASSWORD
+                </label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter password" value="voidattack123" autocomplete="off">
+                </div>
+            </div>
+            
+            <button class="btn-login" onclick="login()">
+                <i class="fas fa-sign-in-alt"></i>
+                ACCESS DASHBOARD
+            </button>
+            
+            <div class="status-bar">
+                <div class="status-online">
+                    <span class="status-dot"></span>
+                    SYSTEM: <strong>ONLINE</strong>
+                </div>
+                <div>
+                    <i class="fas fa-server"></i>
+                    <span>v1.0.0</span>
+                </div>
+            </div>
+            
+            <div class="contact-admin">
+                <i class="fas fa-exclamation-triangle"></i>
+                Need account? Contact telegram: <strong>@kejaawrr</strong>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple auth (nanti diganti dengan backend)
+            if(username === 'admin' && password === 'voidattack123') {
+                // Simpan session
+                sessionStorage.setItem('void_user', username);
+                sessionStorage.setItem('void_auth', 'true');
+                
+                // Redirect ke dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('❌ Invalid credentials!');
+                document.getElementById('password').value = '';
+            }
+        }
+        
+        // Enter key support
+        document.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') login();
+        });
+        
+        // Auto-focus password field on username input
+        document.getElementById('username').addEventListener('input', function() {
+            if(this.value.length >= 3) {
+                document.getElementById('password').focus();
+            }
+        });
+    </script>
+</body>
+</html>

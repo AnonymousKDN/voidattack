@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ VOIDATTACK - Credits</title>
+        <!-- Favicon -->
+    <link rel="icon" href="https://i.imghippo.com/files/YaPQ3657YE.jpg" type="image/jpeg">
+    
+    <!-- THAINWILD CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/thainwild-css@latest/dist/thainwild.min.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CUSTOM STYLE -->
+    <style>
+        :root {
+            --void-black: #0a0a0a;
+            --void-dark: #111111;
+            --void-gray: #1a1a1a;
+            --void-white: #ffffff;
+            --void-red: #ff0000;
+            --void-red-dark: #cc0000;
+            --void-red-light: #ff3333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--void-black);
+            color: var(--void-white);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* NAVBAR */
+        .navbar {
+            background: var(--void-dark);
+            border-bottom: 2px solid var(--void-red);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-brand i {
+            color: var(--void-red);
+            font-size: 1.8rem;
+        }
+        
+        .nav-brand h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--void-white), var(--void-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links a {
+            color: var(--void-white);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--void-red-light);
+        }
+        
+        /* CREDITS CONTAINER */
+        .credits-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 30px;
+        }
+        
+        .credits-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .credits-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--void-white);
+        }
+        
+        .credits-header p {
+            color: #aaa;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* CREDITS CARDS */
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .credit-card {
+            background: var(--void-dark);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .credit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--void-red);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--void-red);
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--void-white);
+        }
+        
+        .card-content {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .card-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .card-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-list li i {
+            color: var(--void-red);
+            width: 20px;
+        }
+        
+        /* TECH STACK */
+        .tech-stack {
+            background: var(--void-dark);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .tech-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--void-white);
+            text-align: center;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .tech-item {
+            padding: 20px;
+            background: var(--void-gray);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .tech-item:hover {
+            background: rgba(255, 0, 0, 0.1);
+        }
+        
+        .tech-item i {
+            font-size: 2rem;
+            color: var(--void-red);
+            margin-bottom: 10px;
+        }
+        
+        .tech-item span {
+            display: block;
+            color: var(--void-white);
+            font-weight: 500;
+        }
+        
+        /* FOOTER */
+        .credits-footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: var(--void-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .back-btn:hover {
+            background: var(--void-red-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .credits-container {
+                padding: 0 15px;
+            }
+            
+            .credits-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-bolt"></i>
+            <h1>VOIDATTACK</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </nav>
+    
+    <!-- CREDITS CONTAINER -->
+    <div class="credits-container">
+        <div class="credits-header">
+            <h1>⚡ CREDITS & INFORMATION</h1>
+            <p>Meet the team and technologies behind VoidAttack v1.0</p>
+        </div>
+        
+        <div class="credits-grid">
+            <!-- DEVELOPER CARD -->
+            <div class="credit-card">
+                <div class="card-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h3 class="card-title">PRIMARY DEVELOPER</h3>
+                <div class="card-content">
+                    <p>The main architect and developer behind VoidAttack v1.0.</p>
+                </div>
+                <ul class="card-list">
+                    <li><i class="fas fa-code"></i> <strong>Name:</strong> KeJaaDarkNet</li>
+                    <li><i class="fas fa-laptop-code"></i> <strong>Role:</strong> Full Stack Developer</li>
+                    <li><i class="fas fa-cogs"></i> <strong>Specialization:</strong> Security Tools</li>
+                    <li><i class="fas fa-calendar"></i> <strong>Since:</strong> 2026</li>
+                </ul>
+            </div>
+            
+            <!-- PROJECT CARD -->
+            <div class="credit-card">
+                <div class="card-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3 class="card-title">PROJECT INFO</h3>
+                <div class="card-content">
+                    <p>Details about the VoidAttack project and its development.</p>
+                </div>
+                <ul class="card-list">
+                    <li><i class="fas fa-flag"></i> <strong>Version:</strong> 1.0.0</li>
+                    <li><i class="fas fa-code-branch"></i> <strong>Status:</strong> Active Development</li>
+                    <li><i class="fas fa-lock"></i> <strong>License:</strong> Private</li>
+                    <li><i class="fas fa-database"></i> <strong>Release:</strong> 2024</li>
+                    <li><i class="fas fa-users"></i> <strong>Team Size:</strong> 1 Developer</li>
+                </ul>
+            </div>
+            
+            <!-- SPECIAL THANKS CARD -->
+            <div class="credit-card">
+                <div class="card-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="card-title">SPECIAL THANKS</h3>
+                <div class="card-content">
+                    <p>Individuals and projects that contributed to VoidAttack.</p>
+                </div>
+                <ul class="card-list">
+                    <li><i class="fas fa-css3-alt"></i> ThainWild CSS Framework</li>
+                    <li><i class="fas fa-font-awesome"></i> Font Awesome Icons</li>
+                    <li><i class="fas fa-user-friends"></i> Beta Testers</li>
+                    <li><i class="fas fa-comments"></i> Community Feedback</li>
+                    <li><i class="fas fa-shield-alt"></i> Security Researchers</li>
+                </ul>
+            </div>
+            
+            <!-- CONTACT CARD -->
+            <div class="credit-card">
+                <div class="card-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="card-title">CONTACT & SUPPORT</h3>
+                <div class="card-content">
+                    <p>Get in touch for support, questions, or collaboration.</p>
+                </div>
+                <ul class="card-list">
+                    <li><i class="fas fa-user-tag"></i> <strong>Developer:</strong> KeJaaDarkNet</li>
+                    <li><i class="fas fa-exclamation-circle"></i> <strong>Support:</strong> Contact via Dashboard</li>
+                    <li><i class="fas fa-bug"></i> <strong>Bug Reports:</strong> Dashboard > Logs</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Feature Requests:</strong> Direct Message</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- TECH STACK -->
+        <div class="tech-stack">
+            <h2 class="tech-title">🛠️ TECHNOLOGY STACK</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node-js"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server"></i>
+                    <span>Nginx</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <span>SQLite</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Security</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="credits-footer">
+            <p><i class="fas fa-code"></i> Built with passion for security research and ethical hacking education.</p>
+            <p><i class="fas fa-exclamation-triangle"></i> For educational purposes only. Use responsibly.</p>
+            <a href="dashboard.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> RETURN TO DASHBOARD
+            </a>
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #444;">
+                &copy; 2026 VOIDATTACK v1.0 | All rights reserved.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Check login
+        window.onload = function() {
+            const auth = sessionStorage.getItem('void_auth');
+            if(!auth || auth !== 'true') {
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+</html>

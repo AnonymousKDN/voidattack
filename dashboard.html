@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ VOIDATTACK - Dashboard</title>
+        <!-- Favicon -->
+    <link rel="icon" href="https://i.imghippo.com/files/YaPQ3657YE.jpg" type="image/jpeg">
+    
+    <!-- THAINWILD CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/thainwild-css@latest/dist/thainwild.min.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CUSTOM STYLE -->
+    <style>
+        :root {
+            --void-black: #0a0a0a;
+            --void-dark: #111111;
+            --void-gray: #1a1a1a;
+            --void-white: #ffffff;
+            --void-red: #ff0000;
+            --void-red-dark: #cc0000;
+            --void-red-light: #ff3333;
+            --void-glow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--void-black);
+            color: var(--void-white);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* NAVBAR */
+        .navbar {
+            background: var(--void-dark);
+            border-bottom: 2px solid var(--void-red);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-brand i {
+            color: var(--void-red);
+            font-size: 1.8rem;
+            animation: glow 2s infinite alternate;
+        }
+        
+        .nav-brand h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--void-white), var(--void-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--void-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--void-white);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--void-red-light);
+        }
+        
+        .nav-links a.active {
+            background: var(--void-red);
+            color: white;
+        }
+        
+        /* MAIN CONTAINER */
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            background: var(--void-dark);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-title {
+            color: var(--void-red);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .stat-card {
+            background: var(--void-gray);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid var(--void-red);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--void-white);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .welcome-box {
+            background: linear-gradient(135deg, var(--void-dark), var(--void-gray));
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--void-red), transparent);
+        }
+        
+        .welcome-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .welcome-title i {
+            color: var(--void-red);
+            font-size: 2.5rem;
+        }
+        
+        .welcome-subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* ATTACK PANEL */
+        .attack-panel {
+            background: var(--void-dark);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .panel-title {
+            color: var(--void-white);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel-title i {
+            color: var(--void-red);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--void-white);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: var(--void-gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--void-white);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--void-red);
+            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+        }
+        
+        .btn-launch {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--void-red), var(--void-red-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn-launch:hover {
+            background: linear-gradient(135deg, var(--void-red-dark), var(--void-red));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
+        }
+        
+        .btn-launch:active {
+            transform: translateY(0);
+        }
+        
+        /* LOGS PANEL */
+        .logs-panel {
+            background: var(--void-dark);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .logs-container {
+            background: var(--void-black);
+            border-radius: 8px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .log-entry {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #aaa;
+        }
+        
+        .log-entry.success {
+            color: #00ff00;
+        }
+        
+        .log-entry.error {
+            color: var(--void-red);
+        }
+        
+        .log-entry.warning {
+            color: #ffff00;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-bolt"></i>
+            <h1>VOIDATTACK</h1>
+            <span class="badge" style="background:var(--void-red);color:white;padding:3px 10px;border-radius:10px;font-size:0.8rem;">v1.0</span>
+        </div>
+        
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="#">
+                <i class="fas fa-network-wired"></i> Botnet
+            </a>
+            <a href="#">
+                <i class="fas fa-history"></i> Logs
+            </a>
+            <a href="credits.html">
+                <i class="fas fa-info-circle"></i> Credits
+            </a>
+            <a href="#" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+        
+        <div class="nav-user">
+            <div class="user-avatar">
+                <i class="fas fa-user-secret"></i>
+            </div>
+            <div>
+                <div class="user-name" id="username-display">ADMIN</div>
+                <div class="user-role" style="color:#aaa;font-size:0.8rem;">OWNER</div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">
+                    <i class="fas fa-chart-line"></i> SYSTEM STATUS
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="cpu-usage">42%</div>
+                        <div class="stat-label">CPU</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="ram-usage">68%</div>
+                        <div class="stat-label">RAM</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="active-attacks">2</div>
+                        <div class="stat-label">ACTIVE</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-bots">15</div>
+                        <div class="stat-label">BOTS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-title">
+                    <i class="fas fa-rocket"></i> QUICK ACTIONS
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <button class="btn" style="background:var(--void-gray);color:white;padding:12px;">
+                        <i class="fas fa-play"></i> Start All Bots
+                    </button>
+                    <button class="btn" style="background:var(--void-gray);color:white;padding:12px;">
+                        <i class="fas fa-stop"></i> Stop All Attacks
+                    </button>
+                    <button class="btn" style="background:var(--void-gray);color:white;padding:12px;">
+                        <i class="fas fa-sync"></i> Refresh Stats
+                    </button>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-title">
+                    <i class="fas fa-shield-alt"></i> SECURITY
+                </div>
+                <div style="color:#aaa;font-size:0.9rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                        <span>Firewall:</span>
+                        <span style="color:#00ff00;">ACTIVE</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                        <span>Encryption:</span>
+                        <span style="color:#00ff00;">AES-256</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;">
+                        <span>Last Scan:</span>
+                        <span>5 min ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- WELCOME BOX -->
+            <div class="welcome-box">
+                <div class="welcome-title">
+                    <i class="fas fa-terminal"></i>
+                    Welcome back, <span id="welcome-user">ADMIN</span>
+                </div>
+                <div class="welcome-subtitle">
+                    System is fully operational. Ready to launch attacks.
+                </div>
+                <div style="display:flex;gap:15px;margin-top:20px;">
+                    <div class="chip" style="background:rgba(0,255,0,0.1);color:#00ff00;">
+                        <i class="fas fa-check-circle"></i> Online
+                    </div>
+                    <div class="chip" style="background:rgba(255,0,0,0.1);color:var(--void-red);">
+                        <i class="fas fa-bolt"></i> High Performance
+                    </div>
+                    <div class="chip" style="background:rgba(0,100,255,0.1);color:#0066ff;">
+                        <i class="fas fa-user-shield"></i> Secure
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ATTACK PANEL -->
+            <div class="attack-panel">
+                <div class="panel-title">
+                    <i class="fas fa-crosshairs"></i> LAUNCH ATTACK
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-bullseye"></i> Target URL
+                    </label>
+                    <input type="text" id="target-url" placeholder="https://example.com" value="http://test.target.com">
+                </div>
+                
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-cogs"></i> Attack Method
+                        </label>
+                        <select id="attack-method">
+                            <option value="slowloris">SLOWLORIS</option>
+                            <option value="http-flood">HTTP FLOOD</option>
+                            <option value="udp-flood">UDP FLOOD</option>
+                            <option value="syn-flood">SYN FLOOD</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-tachometer-alt"></i> Intensity
+                        </label>
+                        <select id="attack-intensity">
+                            <option value="low">LOW (100 threads)</option>
+                            <option value="medium" selected>MEDIUM (500 threads)</option>
+                            <option value="high">HIGH (1000 threads)</option>
+                            <option value="extreme">EXTREME (5000 threads)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-clock"></i> Duration (seconds)
+                        </label>
+                        <input type="number" id="attack-duration" value="60" min="10" max="600">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-robot"></i> Bot Count
+                        </label>
+                        <input type="number" id="bot-count" value="15" min="1" max="1000">
+                    </div>
+                </div>
+                
+                <button class="btn-launch" onclick="launchAttack()">
+                    <i class="fas fa-rocket"></i>
+                    LAUNCH ATTACK
+                </button>
+            </div>
+            
+            <!-- LOGS PANEL -->
+            <div class="logs-panel">
+                <div class="panel-title">
+                    <i class="fas fa-clipboard-list"></i> REAL-TIME LOGS
+                    <button class="btn" style="margin-left:auto;padding:5px 15px;background:var(--void-gray);color:white;" onclick="clearLogs()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                
+                <div class="logs-container" id="logs-container">
+                    <div class="log-entry success">[14:30:05] System initialized successfully</div>
+                    <div class="log-entry">[14:30:10] User ADMIN logged in</div>
+                    <div class="log-entry">[14:31:22] Botnet connection established (15 bots online)</div>
+                    <div class="log-entry warning">[14:32:45] Attack #001 launched on http://test.target.com</div>
+                    <div class="log-entry">[14:33:10] 500 threads activated</div>
+                    <div class="log-entry success">[14:33:45] Target response time increased to 1200ms</div>
+                    <div class="log-entry">[14:34:20] Attack #002 queued</div>
+                    <div class="log-entry">[14:35:00] System performance: CPU 42%, RAM 68%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <i class="fas fa-code"></i> VOIDATTACK v1.0 | 
+        <i class="fas fa-server"></i> Server: online | 
+        <i class="fas fa-clock"></i> Uptime: 99.8%
+    </div>
+    
+    <script>
+        // Check login
+        window.onload = function() {
+            const user = sessionStorage.getItem('void_user');
+            const auth = sessionStorage.getItem('void_auth');
+            
+            if(!user || !auth || auth !== 'true') {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            document.getElementById('username-display').textContent = user.toUpperCase();
+            document.getElementById('welcome-user').textContent = user.toUpperCase();
+            
+            // Update stats every 5 seconds
+            setInterval(updateStats, 5000);
+            updateStats();
+            
+            // Add some random logs
+            setInterval(addRandomLog, 10000);
+        };
+        
+        function updateStats() {
+            // Simulate random stats
+            document.getElementById('cpu-usage').textContent = 
+                Math.floor(Math.random() * 30 + 30) + '%';
+            document.getElementById('ram-usage').textContent = 
+                Math.floor(Math.random() * 40 + 40) + '%';
+            document.getElementById('active-attacks').textContent = 
+                Math.floor(Math.random() * 3 + 1);
+            document.getElementById('total-bots').textContent = 
+                Math.floor(Math.random() * 5 + 12);
+        }
+        
+        function launchAttack() {
+            const target = document.getElementById('target-url').value;
+            const method = document.getElementById('attack-method').value;
+            const intensity = document.getElementById('attack-intensity').value;
+            const duration = document.getElementById('attack-duration').value;
+            const bots = document.getElementById('bot-count').value;
+            
+            if(!target) {
+                alert('Please enter target URL!');
+                return;
+            }
+            
+            const logContainer = document.getElementById('logs-container');
+            const time = new Date().toLocaleTimeString();
+            
+            logContainer.innerHTML += `
+                <div class="log-entry warning">[${time}] ATTACK LAUNCHED</div>
+                <div class="log-entry">[${time}] Target: ${target}</div>
+                <div class="log-entry">[${time}] Method: ${method.toUpperCase()}</div>
+                <div class="log-entry">[${time}] Intensity: ${intensity.toUpperCase()}</div>
+                <div class="log-entry">[${time}] Duration: ${duration}s | Bots: ${bots}</div>
+                <div class="log-entry">[${time}] Initializing attack sequence...</div>
+            `;
+            
+            logContainer.scrollTop = logContainer.scrollHeight;
+            
+            // Update active attacks
+            const active = document.getElementById('active-attacks');
+            active.textContent = parseInt(active.textContent) + 1;
+            
+            // Show success message
+            setTimeout(() => {
+                const time2 = new Date().toLocaleTimeString();
+                logContainer.innerHTML += `
+                    <div class="log-entry success">[${time2}] Attack successfully launched!</div>
+                    <div class="log-entry success">[${time2}] ${bots} bots engaged</div>
+                `;
+                logContainer.scrollTop = logContainer.scrollHeight;
+            }, 1000);
+        }
+        
+        function addRandomLog() {
+            const logs = [
+                "System check: All services operational",
+                "Network latency: 42ms",
+                "Firewall updated security rules",
+                "Backup completed successfully",
+                "Botnet heartbeat received",
+                "Traffic analysis: 2.4 Gbps throughput",
+                "Security scan: No threats detected",
+                "Memory optimization completed",
+                "Connection to master node stable",
+                "Update available for attack scripts"
+            ];
+            
+            const randomLog = logs[Math.floor(Math.random() * logs.length)];
+            const time = new Date().toLocaleTimeString();
+            
+            const logContainer = document.getElementById('logs-container');
+            logContainer.innerHTML += `<div class="log-entry">[${time}] ${randomLog}</div>`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function clearLogs() {
+            document.getElementById('logs-container').innerHTML = 
+                '<div class="log-entry">Logs cleared ' + new Date().toLocaleTimeString() + '</div>';
+        }
+        
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
